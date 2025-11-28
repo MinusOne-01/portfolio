@@ -43,7 +43,7 @@ export default function ProjectCard({title, tech, description, link, features}){
           </div>
       </div>
 
-      {/* Expandable Content */}
+      {/* Expandable Content //testing//*/}
       <AnimatePresence>
         {open && (
           <motion.div
