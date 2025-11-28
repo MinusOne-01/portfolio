@@ -18,47 +18,29 @@ export default function ProjectCard({title, tech, description, link, features}){
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className="relative w-full max-w-md mx-auto border border-neutral-800 
-                 rounded-2xl p-6 cursor-pointer overflow-hidden 
-                 transition-colors duration-300"
+      className="border border-neutral-800 rounded-2xl
+                cursor-pointer overflow-hidden 
+                transition-colors duration-300"
     >
-      {/* Background Banner */}
-      <motion.div
-        initial={{ opacity: 0.3 }}
-        animate={{ opacity: open ? 0 : 0.25 }}
-        transition={{ duration: 0.25 }}
-        className="absolute inset-0 z-10"
-      >
-        {/* <Image
-          src={banner}
-          alt="Project banner"
-          fill
-          className={`object-cover transition-all duration-300 ${
-            open ? "blur scale-105" : "blur scale-110"
-          }`}
-        /> */}
+      <div className="min-w-[80vw] max-w-[80vw] flex flex-col items-center justify-center gap-3">
+          {/* Title */}
+          <h2 className="mt-5 text-2xl font-bold z-10 text-center">
+            {title}
+          </h2>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-      </motion.div>
-
-      {/* Title */}
-      <h2 className="text-2xl font-bold text-center mb-4 relative z-10">
-        {title}
-      </h2>
-
-      {/* Tech Logos */}
-      <div className="relative z-10 flex justify-center gap-3 mb-2">
-        {tech.map((icon, idx) => (
-          <Image
-            key={idx}
-            src={`/icons/${icon}.svg`}
-            alt={icon}
-            width={26}
-            height={26}
-            className="opacity-80 invert"
-          />
-        ))}
+          {/* Tech Logos */}
+          <div className="z-10 flex justify-center gap-3 mb-5">
+            {tech.map((icon, idx) => (
+              <Image
+                key={idx}
+                src={`/icons/${icon}.svg`}
+                alt={icon}
+                width={26}
+                height={26}
+                className="opacity-80 invert"
+              />
+            ))}
+          </div>
       </div>
 
       {/* Expandable Content */}
@@ -68,16 +50,18 @@ export default function ProjectCard({title, tech, description, link, features}){
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden mt-4 relative z-10"
+            transition={{ duration: 0.5 }}
+            className="overflow-hidden z-10"
           >
+
+          <div className="max-w-[80vw] min-w-[80vw] flex flex-col items-center justify-center gap-3">  
             {/* Main description */}
-            <p className="text-white/70 text-sm leading-relaxed mb-4">
+            <p className="text-white/70 text-sm leading-relaxed mb-4 text-center mt-2 px-5">
               {description}
             </p>
 
             {/* Carousel wrapper */}
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-4">
               
               {/* Showcase Image */}
               <div className="w-1/2">
@@ -148,6 +132,7 @@ export default function ProjectCard({title, tech, description, link, features}){
             >
               Visit App →
             </a>
+            </div>  
           </motion.div>
         )}
       </AnimatePresence>

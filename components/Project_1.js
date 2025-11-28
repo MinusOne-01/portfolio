@@ -19,7 +19,7 @@ export default function Project_1(){
   ];
 
   return (
-    <div>
+    <div className=''>
       <Main_cards
             title="it's yourFeed"
             tech={["react", "prisma", "tailwindcss"]}

@@ -3,7 +3,7 @@ import Project_1 from "@/components/Project_1";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center justify-center">
+    <div className="min-h-screen w-full bg-[#0d0d0d] flex flex-col items-center justify-center">
 
       <div>
         <Main_head/>
