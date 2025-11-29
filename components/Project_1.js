@@ -6,7 +6,7 @@ export default function Project_1(){
   const features=[
     {
       img: "/p1/ss1.png",
-      text: "Create notes instantly with keyboard shortcuts."
+      text: "Create notes instantly with keyboard fgdfgggtgdtg gfdgdfgf  gfggfggdf  gggbfgtg ggh g bfg shortcuts."
     },
     {
       img: "/p1/ss2.png",

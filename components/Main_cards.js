@@ -22,7 +22,7 @@ export default function ProjectCard({title, tech, description, link, features}){
                 cursor-pointer overflow-hidden 
                 transition-colors duration-300"
     >
-      <div className="min-w-[80vw] max-w-[80vw] flex flex-col items-center justify-center gap-3">
+      <div className="w-[80vw] lg:max-w-2xl flex flex-col items-center justify-center gap-3">
           {/* Title */}
           <h2 className="mt-5 text-2xl font-bold z-10 text-center">
             {title}
@@ -54,41 +54,49 @@ export default function ProjectCard({title, tech, description, link, features}){
             className="overflow-hidden z-10"
           >
 
-          <div className="max-w-[80vw] min-w-[80vw] flex flex-col items-center justify-center gap-3">  
+          <div className="w-[80vw] lg:max-w-2xl flex flex-col items-center justify-center gap-3 px-3">  
             {/* Main description */}
             <p className="text-white/70 text-sm leading-relaxed mb-4 text-center mt-2 px-5">
               {description}
             </p>
 
             {/* Carousel wrapper */}
-            <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex flex-row items-center gap-4 w-full">
               
               {/* Showcase Image */}
               <div className="w-1/2">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <Image
-                      src={features[index].img}
-                      alt="feature"
-                      width={300}
-                      height={300}
-                      className="rounded-xl"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                <div className="relative w-full aspect-9/18 overflow-hidden rounded-xl">
+                 <AnimatePresence mode="wait">
+                    <motion.div
+                      key={index}
+                      className="absolute inset-0"
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -50 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <Image
+                        src={features[index].img}
+                        alt="feature"
+                        fill
+                        className="object-cover rounded-xl"
+                      />
+                    </motion.div>
+                  </AnimatePresence> 
+                </div>
               </div>
 
+
               {/* Showcase Description */}
-              <div className="w-1/2 text-white/80 text-sm">
+              <div className="w-1/2">
+
+              <div className="w-full aspect-9/18">
+                
+                <div className="h-[80%] py-20">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={index}
+                    className="text-center text-white/80 text-sm"
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 30 }}
@@ -97,9 +105,10 @@ export default function ProjectCard({title, tech, description, link, features}){
                     {features[index].text}
                   </motion.p>
                 </AnimatePresence>
+                </div>
 
                 {/* Arrows */}
-                <div className="flex gap-4 mt-4">
+                <div className="flex items-center justify-center gap-4">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -109,7 +118,6 @@ export default function ProjectCard({title, tech, description, link, features}){
                   >
                     ←
                   </button>
-
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -120,18 +128,28 @@ export default function ProjectCard({title, tech, description, link, features}){
                     →
                   </button>
                 </div>
+
+                </div>
               </div>
             </div>
 
             {/* Visit link */}
-            <a
-              href={link}
+            <a href={link}
               target="_blank"
               onClick={(e) => e.stopPropagation()}
-              className="text-sm text-blue-400 hover:text-blue-300 underline block mt-4"
+              className="inline-flex items-center gap-2 px-4 py-2 mt-3 mb-7 text-sm
+                        text-white bg-neutral-800/70
+                        border border-neutral-700
+                        rounded-lg
+                        hover:bg-black-700 hover:border-neutral-500
+                        transition-all duration-300 group"
             >
-              Visit App →
+              Visit App
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </a>
+
             </div>  
           </motion.div>
         )}
