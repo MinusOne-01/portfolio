@@ -1,27 +1,53 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function ProjectCard({title, tech, description, link, features}){
+export default function ProjectCard({title, tech, description, git_link, app_link, features}){
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const cardRef = useRef(null);
 
   const next = () => setIndex((i) => (i + 1) % features.length);
   const prev = () => setIndex((i) => (i - 1 + features.length) % features.length);
 
-  return (
+  const handleClick = () => {
+    setOpen((prev) => {
+      const nextOpen = !prev;
 
+      if (!prev && cardRef.current) {
+        console.log('scroll trigger')
+        setTimeout(() => {
+        const y = cardRef.current.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({
+          top: y,
+          behavior: "smooth",
+        });
+      }, 120);
+      }
+
+      return nextOpen;
+    });
+  };
+
+
+  return (
+    
     <motion.div
-      onClick={() => setOpen(!open)}
+      ref={cardRef}
+      onClick={handleClick}
       initial={{ scale: 1 }}
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className="border border-neutral-800 rounded-2xl
-                cursor-pointer overflow-hidden 
-                transition-colors duration-300"
+      className="border border-neutral-800 rounded-2xl cursor-pointer overflow-hidden transition-colors duration-300 mb-10"
     >
+      <div className="hidden">
+        {features.map((f) => (
+          <Image key={f.img} src={f.img} alt="" width={10} height={10} />
+        ))}
+      </div>
+
       <div className="w-[80vw] lg:max-w-2xl flex flex-col items-center justify-center gap-3">
           {/* Title */}
           <h2 className="mt-5 text-2xl font-bold z-10 text-center">
@@ -43,6 +69,7 @@ export default function ProjectCard({title, tech, description, link, features}){
           </div>
       </div>
 
+
       {/* Expandable Content //testing//*/}
       <AnimatePresence>
         {open && (
@@ -54,7 +81,7 @@ export default function ProjectCard({title, tech, description, link, features}){
             className="overflow-hidden z-10"
           >
 
-          <div className="w-[80vw] lg:max-w-2xl flex flex-col items-center justify-center gap-3 px-3">  
+          <div className="w-[80vw] lg:max-w-2xl flex flex-col items-center justify-center gap-3 px-5">  
             {/* Main description */}
             <p className="text-white/70 text-sm leading-relaxed mb-4 text-center mt-2 px-5">
               {description}
@@ -92,11 +119,11 @@ export default function ProjectCard({title, tech, description, link, features}){
 
               <div className="w-full aspect-9/18">
                 
-                <div className="h-[80%] py-20">
+                <div className="h-[80%] overflow-hidden flex items-center justify-center">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={index}
-                    className="text-center text-white/80 text-sm"
+                    className="text-center text-white/60 text-[9px] md:text-sm whitespace-pre-line leading-relaxed" 
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 30 }}
@@ -133,11 +160,28 @@ export default function ProjectCard({title, tech, description, link, features}){
               </div>
             </div>
 
-            {/* Visit link */}
-            <a href={link}
+            {/* git and app_link buttons */}
+            <div className="flex items-center justify-center gap-5">
+            <a href={git_link}
               target="_blank"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 px-4 py-2 mt-3 mb-7 text-sm
+              className="inline-flex items-center gap-2 mt-3 mb-7 
+                        px-3 py-2 text-xs
+                        sm:px-4 sm:py-2 sm:text-sm
+                        text-white bg-neutral-800/70
+                        border border-neutral-700
+                        rounded-lg
+                        hover:bg-black-700 hover:border-neutral-500
+                        transition-all duration-300 group"
+            >
+              Checkout Git repo
+            </a>
+            <a href={app_link}
+              target="_blank"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 mt-3 mb-7
+                        px-3 py-2 text-xs
+                        sm:px-4 sm:py-2 sm:text-sm
                         text-white bg-neutral-800/70
                         border border-neutral-700
                         rounded-lg
@@ -149,6 +193,7 @@ export default function ProjectCard({title, tech, description, link, features}){
                 →
               </span>
             </a>
+            </div>
 
             </div>  
           </motion.div>
