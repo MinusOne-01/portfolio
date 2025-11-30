@@ -16,9 +16,9 @@ export default function Home() {
       </section>
       
       <section className='min-h-screen'>
+
         <Project_1/>
-        <Project_1/>
-        <Project_1/>
+        
       </section>
       
       <section>
