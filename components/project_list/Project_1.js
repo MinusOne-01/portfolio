@@ -6,12 +6,12 @@ export default function Project_1(){
   const title = 'Feedify';
   const tech = ["react", "prisma", "openai"];
 
-  const desc = 'custom Youtube feed to escape the chaotic default homepage';
+  const desc = "A distraction-free YouTube feed with AI-powered video summaries";
 
   const features = [
     {
-        img: "/p1/S3.png",
-        text: `• Create your own Clean, distraction-free feed
+        img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/S3.png",
+        text: `• Build a custom feed based on your interests
                • Get AI summary before you get into a video`,
     }
   ];
@@ -34,3 +34,4 @@ export default function Project_1(){
     </div>
   )
 }
+

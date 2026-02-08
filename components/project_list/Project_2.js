@@ -6,20 +6,21 @@ export default function Project_2(){
   const title = 'CitySync';
   const tech = ["nodejs", "redis", "aws", "map"];
 
-  const desc = 'Scalable meetup platform built around Event driven Asynchronous processing, Geospatial feed ranking and Proprietary Auth service';
+  const desc = "A scalable, location-based meetup platform with geospatial feeds and event-driven background processing";
+
 
   const features = [
     {
-        img: "/p2/C1.png",
-        text: `• Redis-backed background workers are used to update and built Geospatial User feed`,
+        img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C1.png",
+        text: `• Location-aware feeds built using Redis-backed background workers`,
     },
     {
-      img: "/p2/C2.png",
-      text: `User uploaded media like Meetup flyers, Profile Avatars are handled client side using Presigned AWS S3 bucket URLs`,
+      img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C2.png",
+      text: `Secure media uploads handled via presigned AWS S3 URLs`,
     },
     {
-      img: "/p2/C3.png",
-      text: `• User notifications are handled Asynchronously via Redis-backed background workers`,
+      img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C3.png",
+      text: `• Async notifications processed through Redis workers`,
     },
   ];
 
