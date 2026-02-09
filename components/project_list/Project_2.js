@@ -11,15 +11,15 @@ export default function Project_2(){
 
   const features = [
     {
-        img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C1.png",
+        img: "/p2/C1.png",
         text: `• Location-aware feeds built using Redis-backed background workers`,
     },
     {
-      img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C2.png",
+      img: "/p2/C2.png",
       text: `Secure media uploads handled via presigned AWS S3 URLs`,
     },
     {
-      img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/C3.png",
+      img: "/p2/C3.png",
       text: `• Async notifications processed through Redis workers`,
     },
   ];
@@ -42,3 +42,4 @@ export default function Project_2(){
     </div>
   )
 }
+
