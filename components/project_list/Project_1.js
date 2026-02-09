@@ -3,14 +3,14 @@ import ProjectCard from './ProjectCard';
 
 export default function Project_1(){
 
-  const title = 'Feedify';
+  const title = 'AlgoFree';
   const tech = ["react", "prisma", "openai"];
 
   const desc = "A distraction-free YouTube feed with AI-powered video summaries";
 
   const features = [
     {
-        img: "https://citysync-uploads-2026.s3.eu-north-1.amazonaws.com/meetups/portfolio/S3.png",
+        img: "/p1/S1.png",
         text: `• Build a custom feed based on your interests
                • Get AI summary before you get into a video`,
     }
