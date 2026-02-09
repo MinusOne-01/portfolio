@@ -30,6 +30,22 @@ const setSnapLocked = (locked) => {
   else root.removeAttribute(SNAP_LOCK_ATTR);
 };
 
+const preloadedImagesRef = useRef(new Set());
+
+useEffect(() => {
+  if (!Array.isArray(features) || features.length === 0) return;
+
+  features.forEach((feature) => {
+    const src = feature?.img;
+    if (!src || preloadedImagesRef.current.has(src)) return;
+
+    const img = new window.Image();
+    img.src = src; 
+    preloadedImagesRef.current.add(src);
+  });
+}, [features]);
+
+
 useEffect(() => {
   return () => setSnapLocked(false);
 }, []);
